@@ -14,4 +14,6 @@
  run code with     sudo python3 main1.py
  for stop this code press  ctrl+c . 
  enjoy it.
- if you want to send bann users tu telgram bot set telegram bot-api and one chatID.
+ if you want to send bann users tu telgram bot , set telegram bot-api and one chatID.
+
+ in main-V2 :   if users higher than 3 , connection block. when  user lower than 3 auto connect.
