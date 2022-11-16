@@ -106,4 +106,3 @@ while True:
     time.sleep(1)
 
 
-#if users higher than 3 , connection block. when  user lower than 3 auto connect.
