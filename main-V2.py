@@ -23,7 +23,7 @@ def getUsers():
     conn.close();
     return users_list
 
-	#disable Account
+	#disable Account#
 
 def disableAccount(user_port):
     conn = sqlite3.connect(_db_address) 
@@ -34,7 +34,7 @@ def disableAccount(user_port):
     os.popen("x-ui restart")
     time.sleep(3)
 
-    #enable Account
+    #enable Account#
 	
 def enableAccount(user_port):
     conn = sqlite3.connect(_db_address) 
@@ -45,7 +45,7 @@ def enableAccount(user_port):
     os.popen("x-ui restart")
     time.sleep(3)
 	
-    #Check New Users 
+    #Check New Users#
 	
 def checkNewUsers():
     conn = sqlite3.connect(_db_address)
@@ -91,10 +91,10 @@ class AccessChecker(threading.Thread):
                 netstate_data = str(netstate_data)
                 connection_count =  len(netstate_data.split("\n")) - 1;
                 if connection_count > _max_allowed_connections:
-                    time.sleep(60)
+                    time.sleep(100)
                 else: 
                     requests.get(f'https://api.telegram.org/bot{_telegrambot_token}/sendMessage?chat_id={_telegram_chat_id}&text={user_remark}%20:%20{user_port}%20Unlocked%20By%20{connection_count}%20Connection')
-                    enableAccount(user_port=user_port)     
+                    enableAccount(user_port=user_port)    
                     print(f"{user_remark} with {connection_count}%20Connection and port {user_port} Unlocked")
                     time.sleep(10)
  
@@ -104,5 +104,3 @@ schedule.every(1).minutes.do(checkNewUsers)
 while True:
     schedule.run_pending()
     time.sleep(1)
-
-
